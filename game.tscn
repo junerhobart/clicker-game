@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://bpgkydokqogo2"]
 
 [ext_resource type="Script" uid="uid://d0ueqktfqujeq" path="res://src/controllers/the_button_contoller.gd" id="1_80nbo"]
-[ext_resource type="Texture2D" uid="uid://cbw7s22d4ly7u" path="res://assets/planets/planet00.png" id="1_e2o6t"]
 [ext_resource type="FontFile" uid="uid://ck2v1mkqj56xs" path="res://assets/PressStart2P.ttf" id="3_fc0e3"]
 [ext_resource type="Script" uid="uid://huvaoqpkmya3" path="res://src/controllers/money_controller.gd" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://cgxl38pyce1d3" path="res://src/controllers/upgrades/money_per_click.gd" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://pm8wn4a714ed" path="res://src/controllers/upgrades/rebirth.gd" id="6_hve3p"]
 [ext_resource type="AudioStream" uid="uid://ddquvqm2gbcqr" path="res://assets/sfx/click.ogg" id="6_j5wjh"]
 [ext_resource type="Script" uid="uid://bori5ld30i5pl" path="res://src/modules/sfx.gd" id="6_vef74"]
 [ext_resource type="AudioStream" uid="uid://bbmg43gxblpu" path="res://assets/sfx/error.ogg" id="7_vef74"]
 [ext_resource type="AudioStream" uid="uid://de5iva7b4755i" path="res://assets/sfx/confirmation.ogg" id="8_hve3p"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vef74"]
+load_path = "res://.godot/imported/planet00.png-3296ffdeff0776eba0980b7eb7b00eb3.ctex"
 
 [node name="Node2D" type="Node2D" unique_id=724714222]
 
@@ -24,7 +27,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-icon = ExtResource("1_e2o6t")
+icon = SubResource("CompressedTexture2D_vef74")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -59,6 +62,16 @@ theme_override_font_sizes/font_size = 4
 text = "$000 | +1 Click (000)"
 alignment = 0
 script = ExtResource("5_7jktm")
+
+[node name="Rebirth" type="Button" parent="Upgrades" unique_id=1558651711]
+offset_left = -16.0
+offset_top = -61.0
+offset_right = 104.0
+offset_bottom = -45.0
+theme_override_fonts/font = ExtResource("3_fc0e3")
+theme_override_font_sizes/font_size = 8
+text = "$00000 REBIRTH"
+script = ExtResource("6_hve3p")
 
 [node name="SFX" type="Node" parent="." unique_id=994250863]
 script = ExtResource("6_vef74")
