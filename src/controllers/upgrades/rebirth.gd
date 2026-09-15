@@ -12,7 +12,7 @@ var planet_assetsdict = "res://assets/planets/"
 
 var money_multiplier: float = 1.0
 
-var cost: int = 0
+var cost: int = 1028
 
 var rebirth_count: int = 1
 
