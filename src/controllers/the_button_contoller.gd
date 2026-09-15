@@ -3,7 +3,7 @@ extends Button
 
 const ButtonEffectsModule = preload("res://src/modules/button_effects.gd")
 
-@onready var money_label = $"../Container/Currency"
+@onready var money_label = $"../CurrencyContainer"
 
 var effects: ButtonEffectsModule
 

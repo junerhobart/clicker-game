@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0ueqktfqujeq" path="res://src/controllers/the_button_contoller.gd" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://cbw7s22d4ly7u" path="res://assets/planets/planet00.png" id="1_e2o6t"]
+[ext_resource type="FontFile" uid="uid://ck2v1mkqj56xs" path="res://assets/PressStart2P.ttf" id="3_fc0e3"]
 [ext_resource type="Script" uid="uid://huvaoqpkmya3" path="res://src/controllers/money_controller.gd" id="3_feb5d"]
 
 [node name="Node2D" type="Node2D" unique_id=724714222]
@@ -27,14 +28,16 @@ script = ExtResource("1_80nbo")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=450964062]
 zoom = Vector2(5, 5)
 
-[node name="Container" type="Container" parent="." unique_id=878699353]
+[node name="CurrencyContainer" type="Container" parent="." unique_id=878699353]
 clip_contents = true
-offset_left = -109.0
-offset_top = -65.0
-offset_right = 116.0
-offset_bottom = -42.0
-
-[node name="Currency" type="Label" parent="Container" unique_id=745541895]
-layout_mode = 2
-text = "$$$$"
+offset_left = -112.0
+offset_top = -61.0
+offset_right = 113.0
+offset_bottom = -38.0
 script = ExtResource("3_feb5d")
+
+[node name="Label" type="Label" parent="CurrencyContainer" unique_id=745541895]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fc0e3")
+text = "$$$$"
+vertical_alignment = 2

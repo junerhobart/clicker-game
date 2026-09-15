@@ -1,6 +1,8 @@
-extends Label
+extends Container
 
 var money: int = 0
 
+@onready var TLabel: Label = $Label
+
 func _process(_delta) -> void:
-	text = str(money)
+	TLabel.text = str(money)
