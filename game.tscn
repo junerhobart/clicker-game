@@ -5,6 +5,10 @@
 [ext_resource type="FontFile" uid="uid://ck2v1mkqj56xs" path="res://assets/PressStart2P.ttf" id="3_fc0e3"]
 [ext_resource type="Script" uid="uid://huvaoqpkmya3" path="res://src/controllers/money_controller.gd" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://cgxl38pyce1d3" path="res://src/controllers/upgrades/money_per_click.gd" id="5_7jktm"]
+[ext_resource type="AudioStream" uid="uid://ddquvqm2gbcqr" path="res://assets/sfx/click.ogg" id="6_j5wjh"]
+[ext_resource type="Script" uid="uid://bori5ld30i5pl" path="res://src/modules/sfx.gd" id="6_vef74"]
+[ext_resource type="AudioStream" uid="uid://bbmg43gxblpu" path="res://assets/sfx/error.ogg" id="7_vef74"]
+[ext_resource type="AudioStream" uid="uid://de5iva7b4755i" path="res://assets/sfx/confirmation.ogg" id="8_hve3p"]
 
 [node name="Node2D" type="Node2D" unique_id=724714222]
 
@@ -43,13 +47,27 @@ theme_override_fonts/font = ExtResource("3_fc0e3")
 text = "$$$$"
 vertical_alignment = 2
 
-[node name="Button" type="Button" parent="." unique_id=1791894708]
-offset_left = 21.0
-offset_top = 50.0
-offset_right = 113.0
-offset_bottom = 62.0
+[node name="Upgrades" type="Node" parent="." unique_id=1336251695]
+
+[node name="MoneyPerClick" type="Button" parent="Upgrades" unique_id=1791894708]
+offset_left = -46.0
+offset_top = 44.0
+offset_right = 46.0
+offset_bottom = 56.0
 theme_override_fonts/font = ExtResource("3_fc0e3")
 theme_override_font_sizes/font_size = 4
 text = "$000 | +1 Click (000)"
 alignment = 0
 script = ExtResource("5_7jktm")
+
+[node name="SFX" type="Node" parent="." unique_id=994250863]
+script = ExtResource("6_vef74")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="SFX" unique_id=593523107]
+stream = ExtResource("6_j5wjh")
+
+[node name="Error" type="AudioStreamPlayer2D" parent="SFX" unique_id=176080493]
+stream = ExtResource("7_vef74")
+
+[node name="Confirmation" type="AudioStreamPlayer2D" parent="SFX" unique_id=1942234906]
+stream = ExtResource("8_hve3p")
