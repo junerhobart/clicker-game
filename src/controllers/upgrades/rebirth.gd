@@ -8,8 +8,6 @@ var _effects = BUTTON_EFFECTS_MODULE.new()
 @onready var _money_per_click = $"../MoneyPerClick"
 @onready var _planet_button = $"../../TheButton"
 
-var _planet_assets_dir = "res://assets/planets/"
-
 var money_multiplier: float = 1.0
 
 # base cost for rebirth, doubles with each rebirth
