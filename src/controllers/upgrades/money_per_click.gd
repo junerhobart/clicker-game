@@ -1,45 +1,45 @@
 extends Button
 
-const ButtonEffectsModule = preload("uid://c28lvt14ng4jj")
-var effects = ButtonEffectsModule.new()
-@onready var sfx = $"../../SFX"
-@onready var CurrencyContainer = $"../../CurrencyContainer"
+const BUTTON_EFFECTS_MODULE = preload("uid://c28lvt14ng4jj")
+var _effects = BUTTON_EFFECTS_MODULE.new()
+@onready var _sfx = $"../../Sfx"
+@onready var _currency_container = $"../../CurrencyContainer"
 
-@export var moneyPerClick: int = 1
+@export var money_per_click: int = 1
 
 @export var cost: int = 1
 
-var money: int:
-	get: return CurrencyContainer.money 
-	set(value): CurrencyContainer.money = value
+var _money: int:
+	get: return _currency_container.money
+	set(value): _currency_container.money = value
 
-func updateCost() -> void:
-	cost = int(pow(moneyPerClick, 2) + cost)
+func _update_cost() -> void:
+	cost = int(pow(money_per_click, 2) + cost)
 
-func updateText() -> void:
-	text = "$" + str(cost) + " | +$1 Per Click" + " (" + str(moneyPerClick) + ")" 
+func update_text() -> void:
+	text = "$" + str(cost) + " | +$1 Per Click" + " (" + str(money_per_click) + ")"
 	
 func _ready() -> void:
 	pivot_offset_ratio = Vector2(0.5, 0.5)
 	
 	# button effects:
-	mouse_exited.connect(effects.play_released_effect.bind(self))
-	mouse_entered.connect(effects.play_hover_effect.bind(self))
-	button_down.connect(effects.play_pressing_effect.bind(self))
-	pressed.connect(effects.play_pressed_effect.bind(self))
+	mouse_exited.connect(_effects.play_released_effect.bind(self))
+	mouse_entered.connect(_effects.play_hover_effect.bind(self))
+	button_down.connect(_effects.play_pressing_effect.bind(self))
+	pressed.connect(_effects.play_pressed_effect.bind(self))
 
-	updateText()
+	update_text()
 
 	# if pressed then:
 	pressed.connect(func() -> void:
-		if money >= cost:
-			money -= cost
-			moneyPerClick += 1
+		if _money >= cost:
+			_money -= cost
+			money_per_click += 1
 
-			updateCost()
-			updateText()
+			_update_cost()
+			update_text()
 
-			sfx.confirmation()
+			_sfx.confirmation()
 		else:
-			sfx.error()
+			_sfx.error()
 	)

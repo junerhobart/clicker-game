@@ -1,45 +1,45 @@
 extends Button
 
-const ButtonEffectsModule = preload("res://src/modules/button_effects.gd")
-var effects = ButtonEffectsModule.new()
+const BUTTON_EFFECTS_MODULE = preload("res://src/modules/button_effects.gd")
+var _effects = BUTTON_EFFECTS_MODULE.new()
 
-@onready var CurrencyContainer = $"../../CurrencyContainer"
-@onready var sfx = $"../../SFX"
-@onready var money_per_click = $"../MoneyPerClick"
-@onready var planet_button = $"../../The Button"
+@onready var _currency_container = $"../../CurrencyContainer"
+@onready var _sfx = $"../../Sfx"
+@onready var _money_per_click = $"../MoneyPerClick"
+@onready var _planet_button = $"../../TheButton"
 
-var planet_assetsdict = "res://assets/planets/"
+var _planet_assets_dir = "res://assets/planets/"
 
 var money_multiplier: float = 1.0
 
 # base cost for rebirth, doubles with each rebirth
 @export var cost: int = 1028
-@export var rebirthCount: int = 1
+@export var rebirth_count: int = 1
 
-func wipe() -> void:
-	CurrencyContainer.money = 0
-	money_per_click.moneyPerClick = 1
-	money_per_click.cost = 1
-	money_per_click.updateText()
+func _wipe() -> void:
+	_currency_container.money = 0
+	_money_per_click.money_per_click = 1
+	_money_per_click.cost = 1
+	_money_per_click.update_text()
 
 func _ready() -> void:
 	pivot_offset_ratio = Vector2(0.5, 0.5)
 
 	pressed.connect(func() -> void:
-		if cost <= CurrencyContainer.money and rebirthCount < 9:
-			sfx.confirmation()
-			wipe()
+		if cost <= _currency_container.money and rebirth_count < 9:
+			_sfx.confirmation()
+			_wipe()
 			money_multiplier *= 2
 			cost *= 2
-			rebirthCount += 1
-			planet_button.icon = load("res://assets/planets/planet%02d.png" % rebirthCount)
+			rebirth_count += 1
+			_planet_button.icon = load("res://assets/planets/planet%02d.png" % rebirth_count)
 		else:
-			sfx.error()
+			_sfx.error()
 	)
-	button_down.connect(effects.play_pressing_effect.bind(self))
-	pressed.connect(effects.play_pressed_effect.bind(self))
-	mouse_exited.connect(effects.play_released_effect.bind(self))
-	mouse_entered.connect(effects.play_hover_effect.bind(self))
+	button_down.connect(_effects.play_pressing_effect.bind(self))
+	pressed.connect(_effects.play_pressed_effect.bind(self))
+	mouse_exited.connect(_effects.play_released_effect.bind(self))
+	mouse_entered.connect(_effects.play_hover_effect.bind(self))
 
 func _process(_delta) -> void:
 	text = "$" + str(cost) + " Rebirth"

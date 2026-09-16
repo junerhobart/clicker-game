@@ -1,14 +1,14 @@
 extends Node
 
-@onready var errorsfx: AudioStreamPlayer2D = $Error
-@onready var confirmationsfx: AudioStreamPlayer2D = $Confirmation
-@onready var clicksfx: AudioStreamPlayer2D = $Click
+@onready var _error_sfx: AudioStreamPlayer2D = $Error
+@onready var _confirmation_sfx: AudioStreamPlayer2D = $Confirmation
+@onready var _click_sfx: AudioStreamPlayer2D = $Click
 
 func error() -> void:
-    errorsfx.play()
+    _error_sfx.play()
 
 func confirmation() -> void:
-    confirmationsfx.play()
+    _confirmation_sfx.play()
 
 func click() -> void:
-    clicksfx.play()
+    _click_sfx.play()

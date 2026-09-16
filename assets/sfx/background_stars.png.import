@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dq0jpmro1pf1g"
-path="res://.godot/imported/background-stars.png-cfb51338a8f525e4f95208fdd68371c4.ctex"
+path="res://.godot/imported/background_stars.png-8a069a9d5e60a837a67cc07677d288d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sfx/background-stars.png"
-dest_files=["res://.godot/imported/background-stars.png-cfb51338a8f525e4f95208fdd68371c4.ctex"]
+source_file="res://assets/sfx/background_stars.png"
+dest_files=["res://.godot/imported/background_stars.png-8a069a9d5e60a837a67cc07677d288d6.ctex"]
 
 [params]
 
