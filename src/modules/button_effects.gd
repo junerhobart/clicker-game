@@ -11,14 +11,14 @@ func create_tween(button: Button, property: String, value: Variant, duration: fl
 
 	_tween.tween_property(button, property, value, duration)
 
-func play_pressing_effect(button: Button, scale: Vector2) -> void:
-	create_tween(button, "scale", scale, 0.1)
+func play_pressing_effect(button: Button, scale: Vector2, time: float = 0.1) -> void:
+	create_tween(button, "scale", scale, time)
 
-func play_pressed_effect(button: Button, scale: Vector2) -> void:
-	create_tween(button, "scale", scale, 0.15)
+func play_pressed_effect(button: Button, scale: Vector2, time: float = 0.15) -> void:
+	create_tween(button, "scale", scale, time)
 
-func play_released_effect(button: Button, scale: Vector2) -> void:
-	create_tween(button, "scale", scale, 0.15)
+func play_released_effect(button: Button, scale: Vector2, time: float = 0.15) -> void:
+	create_tween(button, "scale", scale, time)
 
-func play_hover_effect(button: Button, scale: Vector2) -> void:
-	create_tween(button, "scale", scale, 0.15)
+func play_hover_effect(button: Button, scale: Vector2, time: float = 0.15) -> void:
+	create_tween(button, "scale", scale, time)
