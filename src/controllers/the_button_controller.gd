@@ -11,7 +11,6 @@ const BUTTON_EFFECTS_MODULE = preload("res://src/modules/button_effects.gd")
 var _effects: BUTTON_EFFECTS_MODULE
 
 func _input(event: InputEvent) -> void:
-	
 	if not event.is_action("press_the_button"):
 		return
 
@@ -21,19 +20,19 @@ func _input(event: InputEvent) -> void:
 		pressed.emit()
 		_click_sfx.play()
 	elif event.is_action_released("press_the_button"):
-		_effects.play_released_effect(self)
+		_effects.play_released_effect(self, Vector2(1, 1))
 
 func _ready() -> void:
 	pivot_offset_ratio = Vector2(0.5, 0.5)
-	
+
 	_effects = BUTTON_EFFECTS_MODULE.new()
 
-	button_down.connect(_effects.play_pressing_effect.bind(self))
-	pressed.connect(_effects.play_pressed_effect.bind(self))
+	button_down.connect(_effects.play_pressing_effect.bind(self, Vector2(0.9, 0.9)))
+	pressed.connect(_effects.play_pressed_effect.bind(self, Vector2(1.2, 1.2)))
 	button_down.connect(_click_sfx.play)
 	pressed.connect(func() -> void:
 		_money_label.money += int(_click_upgrade.money_per_click * _rebirth.money_multiplier)
 	)
 
-	mouse_exited.connect(_effects.play_released_effect.bind(self))
-	mouse_entered.connect(_effects.play_hover_effect.bind(self))
+	mouse_exited.connect(_effects.play_released_effect.bind(self, Vector2(1, 1)))
+	mouse_entered.connect(_effects.play_hover_effect.bind(self, Vector2(1.2, 1.2)))

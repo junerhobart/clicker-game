@@ -34,10 +34,10 @@ func _ready() -> void:
 		else:
 			_sfx.error()
 	)
-	button_down.connect(_effects.play_pressing_effect.bind(self))
-	pressed.connect(_effects.play_pressed_effect.bind(self))
-	mouse_exited.connect(_effects.play_released_effect.bind(self))
-	mouse_entered.connect(_effects.play_hover_effect.bind(self))
+	button_down.connect(_effects.play_pressing_effect.bind(self, Vector2(0.95, 0.95)))
+	pressed.connect(_effects.play_pressed_effect.bind(self, Vector2(1.0, 1.0)))
+	mouse_exited.connect(_effects.play_released_effect.bind(self, Vector2(1, 1)))
+	mouse_entered.connect(_effects.play_hover_effect.bind(self, Vector2(1.05, 1.05)))
 
 func _process(_delta) -> void:
 	text = "$" + str(cost) + " Rebirth"
